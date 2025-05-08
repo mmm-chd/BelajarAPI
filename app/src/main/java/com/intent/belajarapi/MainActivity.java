@@ -1,6 +1,8 @@
 package com.intent.belajarapi;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -20,6 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
+    private ProgressBar pbLoading;
     private List<ModelClass> teamList = new ArrayList<>();
 
     @Override
@@ -27,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
+        pbLoading = findViewById(R.id.pbLoading);
 
         recyclerView = findViewById(R.id.rvResult);
         recyclerView.setHasFixedSize(true);
@@ -45,9 +50,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call<TeamResponse> call, Response<TeamResponse> response) {
-                List<ModelClass> teamList = response.body().getTeams();
-                RecyclerViewAdapter adapter = new RecyclerViewAdapter(MainActivity.this, teamList);
-                recyclerView.setAdapter(adapter);
+                if (response.isSuccessful()&& response.body() != null) {
+                    recyclerView.setVisibility(View.VISIBLE);
+                    pbLoading.setVisibility(View.GONE);
+                    List<ModelClass> teamList = response.body().getTeams();
+                    RecyclerViewAdapter adapter = new RecyclerViewAdapter(MainActivity.this, teamList);
+                    recyclerView.setAdapter(adapter);
+                }
             }
 
             @Override
