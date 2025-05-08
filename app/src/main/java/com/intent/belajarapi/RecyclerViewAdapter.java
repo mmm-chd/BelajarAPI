@@ -17,7 +17,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private List<ModelClass> teamList;
 
-    public RecyclerViewAdapter(MainActivity mainActivity, List<ModelClass> teamList) {
+    public RecyclerViewAdapter(PremierActivity premierActivity, List<ModelClass> teamList) {
         this.teamList = teamList;
     }
 
