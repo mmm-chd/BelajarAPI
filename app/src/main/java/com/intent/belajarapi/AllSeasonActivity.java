@@ -9,37 +9,36 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
-public class PremierActivity extends AppCompatActivity {
+public class AllSeasonActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
-    private ProgressBar pbLoading;
-    private Button btnBack;
-    private List<ModelClass> teamList = new ArrayList<>();
+    RecyclerView rvAllSeason;
+    ProgressBar pbLoading;
+    Button btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_premier);
+        setContentView(R.layout.activity_all_season);
 
+        rvAllSeason = findViewById(R.id.rvAllSeason);
         pbLoading = findViewById(R.id.pbLoading);
-        recyclerView = findViewById(R.id.rvResult);
         btnBack = findViewById(R.id.btnBack);
 
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        rvAllSeason.setHasFixedSize(true);
+        rvAllSeason.setLayoutManager(new LinearLayoutManager(this));
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,26 +49,27 @@ public class PremierActivity extends AppCompatActivity {
 
         //Hit Api
         APIService apiService = ApiClient.getClient().create(APIService.class);
-        Call<TeamResponse> call = apiService.getModelClasses();
+        Call<TeamResponse> call = apiService.getModelClassesAllSeason();
 
         call.enqueue(new Callback<TeamResponse>() {
 
             @Override
             public void onResponse(Call<TeamResponse> call, Response<TeamResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    recyclerView.setVisibility(View.VISIBLE);
+                    rvAllSeason.setVisibility(View.VISIBLE);
                     pbLoading.setVisibility(View.GONE);
                     btnBack.setVisibility(View.VISIBLE);
-                    List<ModelClass> teamList = response.body().getTeams();
-                    RvPremierAdapter adapter = new RvPremierAdapter(PremierActivity.this, teamList);
-                    recyclerView.setAdapter(adapter);
+                    List<ModelClass> teamList = response.body().getSeasons();
+                    RvAllSeasonLeague adapter = new RvAllSeasonLeague(AllSeasonActivity.this, teamList);
+                    rvAllSeason.setAdapter(adapter);
                 }
             }
 
             @Override
             public void onFailure(Call<TeamResponse> call, Throwable throwable) {
-                Toast.makeText(PremierActivity.this, "Error: " + throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(AllSeasonActivity.this, "Error: " + throwable.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 }

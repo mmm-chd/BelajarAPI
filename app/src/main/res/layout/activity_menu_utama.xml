@@ -1,49 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FAFAFA"
     tools:context=".MenuUtama">
 
     <TextView
         android:id="@+id/tvWelcome"
-        android:text="Welcome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="150dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Welcome"
         android:textAlignment="center"
-        android:textSize="30sp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvDescWelcome"
-        android:text="What did you seek today?"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="17sp"
         android:layout_marginTop="5dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="What did you seek today?"
         android:textAlignment="center"
-        app:layout_constraintTop_toBottomOf="@+id/tvWelcome"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvWelcome" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvPremiere"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="5dp"
         app:cardCornerRadius="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/cvLa"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDescWelcome"
-        app:layout_constraintEnd_toStartOf="@+id/cvLa">
+        app:layout_constraintBottom_toTopOf="@+id/cvButton">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -55,8 +58,9 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_margin="5dp"
-                tools:src="@tools:sample/avatars"
-                android:backgroundTint="@color/white" />
+                android:backgroundTint="@color/white"
+                android:tooltipText="Premier League"
+                tools:src="@tools:sample/avatars" />
 
         </LinearLayout>
 
@@ -66,13 +70,14 @@
         android:id="@+id/cvLa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
         android:layout_marginStart="5dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="8dp"
         app:cardCornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/cvPremiere"
         app:layout_constraintTop_toBottomOf="@+id/tvDescWelcome"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintBottom_toTopOf="@+id/cvButton">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -84,11 +89,46 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_margin="5dp"
-                tools:src="@tools:sample/avatars"
-                android:backgroundTint="@color/white" />
+                android:backgroundTint="@color/white"
+                android:tooltipText="La Spain"
+                tools:src="@tools:sample/avatars" />
 
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvButton"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="150dp"
+        app:cardCornerRadius="13dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnAllSeason"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="All Season in a league"
+            android:textSize="23sp"
+            android:textColor="@color/black"
+            android:backgroundTint="#C5D6C1"
+            app:cornerRadius="0dp" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

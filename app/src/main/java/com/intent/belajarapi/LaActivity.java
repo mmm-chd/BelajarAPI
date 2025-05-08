@@ -1,7 +1,9 @@
 package com.intent.belajarapi;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -24,6 +26,7 @@ public class LaActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private ProgressBar pbLoading;
+    private Button btnBack;
     private List<ModelClass> teamList = new ArrayList<>();
 
     @Override
@@ -33,10 +36,18 @@ public class LaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_la);
 
         pbLoading = findViewById(R.id.pbLoading);
-
         recyclerView = findViewById(R.id.rvSpain);
+        btnBack = findViewById(R.id.btnBack);
+
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         //Hit Api
         APIService apiService = ApiClient.getClient().create(APIService.class);
@@ -49,6 +60,7 @@ public class LaActivity extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     recyclerView.setVisibility(View.VISIBLE);
                     pbLoading.setVisibility(View.GONE);
+                    btnBack.setVisibility(View.VISIBLE);
                     List<ModelClass> teamList = response.body().getTeams();
                     RvSpainAdapter adapter = new RvSpainAdapter(LaActivity.this, teamList);
                     recyclerView.setAdapter(adapter);

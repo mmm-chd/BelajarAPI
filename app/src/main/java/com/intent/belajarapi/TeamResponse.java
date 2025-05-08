@@ -11,4 +11,11 @@ public class TeamResponse {
     public List<ModelClass> getTeams() {
         return teams;
     }
+
+    @SerializedName("seasons")
+    private List<ModelClass> seasons;
+
+    public List<ModelClass> getSeasons() {
+        return seasons;
+    }
 }

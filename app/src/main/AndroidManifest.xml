@@ -15,6 +15,9 @@
         android:theme="@style/Theme.BelajarAPI"
         tools:targetApi="31">
         <activity
+            android:name=".AllSeasonActivity"
+            android:exported="false" />
+        <activity
             android:name=".LaActivity"
             android:exported="false" />
         <activity
