@@ -9,7 +9,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:paddingTop="30dp"
-    tools:context=".LaActivity">
+    tools:context=".AllSeasonActivity">
 
     <Button
         android:id="@+id/btnBack"
@@ -28,7 +28,7 @@
         android:visibility="gone"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvSpain"
+        android:id="@+id/rvAllSeason"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone" />

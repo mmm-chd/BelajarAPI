@@ -13,28 +13,22 @@ public class ModelClass {
     @SerializedName("strBadge")
     private String strBadge;
 
+    @SerializedName("strSeason")
+    private String strSeason;
+
     public String getStrTeam() {
         return strTeam;
-    }
-
-    public void setStrTeam(String strTeam) {
-        this.strTeam = strTeam;
     }
 
     public String getStrStadium() {
         return strStadium;
     }
 
-    public void setStrStadium(String strStadium) {
-        this.strStadium = strStadium;
-    }
-
     public String getStrBadge() {
         return strBadge;
     }
 
-    public void setStrBadge(String strTeamBadge) {
-        this.strBadge = strTeamBadge;
+    public String getStrSeason() {
+        return strSeason;
     }
-
 }
