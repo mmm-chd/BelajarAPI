@@ -11,6 +11,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.bumptech.glide.Glide;
+
 public class MenuUtama extends AppCompatActivity {
 
     ImageButton btnPremiere;
@@ -24,6 +26,16 @@ public class MenuUtama extends AppCompatActivity {
 
         btnPremiere = findViewById(R.id.btnPremiere);
         btnLa = findViewById(R.id.btnLa);
+
+        // Load image from URL
+        Glide.with(this)
+                .load("https://b.fssta.com/uploads/application/soccer/competition-logos/EnglishPremierLeague.png")
+                .into(btnPremiere);
+
+        Glide.with(this)
+                .load("https://cdn.freelogovectors.net/wp-content/uploads/2023/07/laliga-logo-02-freelogovectors.net_.png")
+                .into(btnLa);
+
 
 
         btnPremiere.setOnClickListener(new View.OnClickListener() {

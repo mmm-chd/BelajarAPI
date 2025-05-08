@@ -52,8 +52,8 @@
 
             <ImageButton
                 android:id="@+id/btnPremiere"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:layout_margin="5dp"
                 tools:src="@tools:sample/avatars"
                 android:backgroundTint="@color/white" />
@@ -81,8 +81,8 @@
 
             <ImageButton
                 android:id="@+id/btnLa"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:layout_margin="5dp"
                 tools:src="@tools:sample/avatars"
                 android:backgroundTint="@color/white" />
