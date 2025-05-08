@@ -13,11 +13,11 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+public class RvSpainAdapter extends RecyclerView.Adapter<RvSpainAdapter.ViewHolder>{
 
     private List<ModelClass> teamList;
 
-    public RecyclerViewAdapter(PremierActivity premierActivity, List<ModelClass> teamList) {
+    public RvSpainAdapter(LaActivity laActivity, List<ModelClass> teamList) {
         this.teamList = teamList;
     }
 
@@ -45,12 +45,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return teamList.size();
     }
 
-
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView txtTeam;
-        private TextView txtStadium;
-        private ImageView ivBadge;
+        TextView txtTeam;
+        TextView txtStadium;
+        ImageView ivBadge;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

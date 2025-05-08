@@ -37,13 +37,9 @@ public class PremierActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Hit API
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://www.thesportsdb.com")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
 
-        APIService apiService = retrofit.create(APIService.class);
+        //Hit Api
+        APIService apiService = ApiClient.getClient().create(APIService.class);
         Call<TeamResponse> call = apiService.getModelClasses();
 
         call.enqueue(new Callback<TeamResponse>() {
@@ -54,7 +50,7 @@ public class PremierActivity extends AppCompatActivity {
                     recyclerView.setVisibility(View.VISIBLE);
                     pbLoading.setVisibility(View.GONE);
                     List<ModelClass> teamList = response.body().getTeams();
-                    RecyclerViewAdapter adapter = new RecyclerViewAdapter(PremierActivity.this, teamList);
+                    RvPremierAdapter adapter = new RvPremierAdapter(PremierActivity.this, teamList);
                     recyclerView.setAdapter(adapter);
                 }
             }
