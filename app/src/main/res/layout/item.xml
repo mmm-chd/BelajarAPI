@@ -14,7 +14,7 @@
         android:padding="10dp">
 
         <ImageView
-            android:id="@+id/imgBadge"
+            android:id="@+id/ivBadge"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginEnd="10dp"

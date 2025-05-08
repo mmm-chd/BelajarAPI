@@ -37,7 +37,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         // Load image with Glide
         Glide.with(holder.itemView.getContext())
                 .load(team.getStrBadge())
-                .into(holder.imgBadge);
+                .into(holder.ivBadge);
     }
 
     @Override
@@ -50,13 +50,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         private TextView txtTeam;
         private TextView txtStadium;
-        private ImageView imgBadge;
+        private ImageView ivBadge;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtTeam = itemView.findViewById(R.id.txtTeam);
             txtStadium = itemView.findViewById(R.id.txtStadium);
-            imgBadge = itemView.findViewById(R.id.imgBadge);
+            ivBadge = itemView.findViewById(R.id.ivBadge);
         }
     }
 }
