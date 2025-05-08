@@ -19,7 +19,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MainActivity extends AppCompatActivity {
+public class PremierActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private ProgressBar pbLoading;
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_premier);
 
         pbLoading = findViewById(R.id.pbLoading);
 
@@ -54,14 +54,14 @@ public class MainActivity extends AppCompatActivity {
                     recyclerView.setVisibility(View.VISIBLE);
                     pbLoading.setVisibility(View.GONE);
                     List<ModelClass> teamList = response.body().getTeams();
-                    RecyclerViewAdapter adapter = new RecyclerViewAdapter(MainActivity.this, teamList);
+                    RecyclerViewAdapter adapter = new RecyclerViewAdapter(PremierActivity.this, teamList);
                     recyclerView.setAdapter(adapter);
                 }
             }
 
             @Override
             public void onFailure(Call<TeamResponse> call, Throwable throwable) {
-                Toast.makeText(MainActivity.this, "Error: " + throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(PremierActivity.this, "Error: " + throwable.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
